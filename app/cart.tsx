@@ -1,29 +1,29 @@
-import React, { useContext } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, Button } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import React from 'react';
+import { View, Text, FlatList, Image, Button, StyleSheet } from 'react-native';
 import { useCart } from '../contexts/CartContext';
 import styles from './styles';
+import { localStyles } from './styles';
 
 const CartScreen: React.FC = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart } = useCart();
 
   const renderItem = ({ item }: { item: any }) => (
-    <ListItem bottomDivider>
+    <View style={localStyles.itemContainer}>
       <Image source={{ uri: item.image }} style={styles.imageCart} />
-      <ListItem.Content>
-        <ListItem.Title>{item.title}</ListItem.Title>
-        <ListItem.Subtitle>
+      <View style={localStyles.textContainer}>
+        <Text style={localStyles.title}>{item.title}</Text>
+        <Text style={localStyles.subtitle}>
           ${item.price} x {item.quantity}
-        </ListItem.Subtitle>
+        </Text>
         <Button title="Remove" onPress={() => removeFromCart(item.id)} />
-      </ListItem.Content>
-    </ListItem>
+      </View>
+    </View>
   );
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <View>
+    <View style={localStyles.container}>
       <FlatList data={cart} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       <Text style={styles.total}>Total: ${totalPrice.toFixed(2)}</Text>
     </View>

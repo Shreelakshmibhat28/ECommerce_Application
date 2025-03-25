@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import { View, Text, Image, StyleSheet, Button , TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import { useLocalSearchParams } from 'expo-router';
 import { useCart } from '../../contexts/CartContext';
+import styles from '../styles';
 
 interface Product {
   id: number;
@@ -52,17 +53,13 @@ const ProductDetails: React.FC = () => {
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.price}>${product.price}</Text>
       <Text style={styles.description}>{product.description}</Text>
-      <Button title="Add to Cart" onPress={handleAddToCart} />
+      <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
+        <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: { padding: 16 },
-  image: { width: 200, height: 200, alignSelf: 'center' },
-  title: { fontSize: 20, fontWeight: 'bold', marginTop: 10 },
-  price: { fontSize: 18, color: 'green', marginTop: 5 },
-  description: { marginTop: 10 },
-});
+
 
 export default ProductDetails;

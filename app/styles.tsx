@@ -68,9 +68,82 @@ const styles = StyleSheet.create({
     total: { 
         fontSize: 18, 
         fontWeight: 'bold', 
-        padding: 10, 
-        textAlign: 'right' 
+        padding: 20, 
+        textAlign: 'left' 
+    },
+
+    addToCartButton: {
+        backgroundColor: 'blue',
+        color: 'white',
+        padding: 15,
+        borderRadius: 8,
+        marginTop: 20,
+        
+        alignItems: 'center',
+      },
+
+     addToCartButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+        },
+
+    /*_layout.tsx*/
+
+    floatingButton: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: 'blue',
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 25,
+        elevation: 5, // Android shadow
+        shadowColor: '#000', // iOS shadow
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+      },
+      buttonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
+  });
+
+  
+
+  const localStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 10,
+    },
+    itemContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#fff',
+      padding: 10,
+      marginVertical: 5,
+      borderRadius: 8,
+      elevation: 3, // Android shadow
+      shadowColor: '#000', // iOS shadow
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+    },
+    textContainer: {
+      flex: 1,
+      marginLeft: 10,
+    },
+    title: {
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    subtitle: {
+      fontSize: 14,
+      color: 'gray',
     },
   });
 
   export default styles;
+    export { localStyles };
