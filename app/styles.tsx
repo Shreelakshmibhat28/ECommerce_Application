@@ -143,6 +143,38 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: 'gray',
     },
+
+    picker: {
+        height: 100,  
+        width: 100,   
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10, 
+        marginTop: 10, 
+        paddingVertical: 5, 
+        paddingHorizontal: 10, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+      },
+
+      counterContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+      },
+      counterButton: {
+        fontSize: 18,
+        color: 'white',
+        backgroundColor: '#ccc',
+        paddingHorizontal: 5,
+        paddingVertical: 3,
+        borderRadius: 5,
+        textAlign: 'center',
+      },
+      counterText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginHorizontal: 15,
+      },
   });
 
   export default styles;

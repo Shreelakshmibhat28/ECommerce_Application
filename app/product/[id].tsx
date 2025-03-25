@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useLocalSearchParams } from 'expo-router';
 import { useCart } from '../../contexts/CartContext';
 import styles from '../styles';
+import { Snackbar } from 'react-native-paper';
 
 interface Product {
   id: number;
@@ -22,6 +23,7 @@ const ProductDetails: React.FC = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const { addToCart } = useCart();
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     axios
@@ -56,6 +58,17 @@ const ProductDetails: React.FC = () => {
       <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
         <Text style={styles.addToCartButtonText}>Add to Cart</Text>
       </TouchableOpacity>
+      <Snackbar
+        visible={visible}
+        onDismiss={() => setVisible(false)}
+        duration={2000} // Dismiss after 2 seconds
+        action={{
+          label: 'OK',
+          onPress: () => setVisible(false),
+        }}
+      >
+        Item is added to cart
+      </Snackbar>
     </View>
   );
 };
