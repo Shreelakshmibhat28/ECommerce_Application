@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, Button } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { useCart } from '../contexts/CartContext';
+import styles from './styles';
 
 const CartScreen: React.FC = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
 
   const renderItem = ({ item }: { item: any }) => (
     <ListItem bottomDivider>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Image source={{ uri: item.image }} style={styles.imageCart} />
       <ListItem.Content>
         <ListItem.Title>{item.title}</ListItem.Title>
         <ListItem.Subtitle>
@@ -29,9 +30,6 @@ const CartScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  image: { width: 50, height: 50 },
-  total: { fontSize: 18, fontWeight: 'bold', padding: 10, textAlign: 'right' },
-});
+
 
 export default CartScreen;

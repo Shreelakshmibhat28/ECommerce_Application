@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
-import { ListItem } from 'react-native-elements';
 import axios from 'axios';
 import { Link } from 'expo-router';
+import styles from './styles';
 
 interface Product {
   id: number;
@@ -29,14 +29,12 @@ const ProductList: React.FC = () => {
 
   const renderItem = ({ item }: { item: Product }) => (
     <Link href={`/product/${item.id}`} asChild>
-      <Pressable>
-        <ListItem bottomDivider>
-          <Image source={{ uri: item.image }} style={styles.image} />
-          <ListItem.Content>
-            <ListItem.Title>{item.title}</ListItem.Title>
-            <ListItem.Subtitle>${item.price}</ListItem.Subtitle>
-          </ListItem.Content>
-        </ListItem>
+      <Pressable style={styles.card}>
+        <Image source={{ uri: item.image }} style={styles.cardImage} />
+        <View style={styles.cardContent}>
+          <Text style={styles.cardTitle}>{item.title}</Text>
+          <Text style={styles.cardPrice}>${item.price}</Text>
+        </View>
       </Pressable>
     </Link>
   );
@@ -46,8 +44,6 @@ const ProductList: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  image: { width: 50, height: 50 },
-});
+
 
 export default ProductList;
