@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
         fontSize: 18, 
         fontWeight: 'bold', 
         padding: 20, 
-        textAlign: 'left' 
+        textAlign: 'left' ,
     },
 
     addToCartButton: {
-        backgroundColor: 'blue',
+        backgroundColor: '#401b29',
         color: 'white',
         padding: 15,
         borderRadius: 8,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 20,
         right: 20,
-        backgroundColor: 'blue',
+        backgroundColor: '#401b29',
         paddingVertical: 12,
         paddingHorizontal: 20,
         borderRadius: 25,
@@ -162,18 +162,22 @@ const styles = StyleSheet.create({
         marginTop: 10,
       },
       counterButton: {
-        fontSize: 18,
-        color: 'white',
-        backgroundColor: '#ccc',
+        fontSize: 12,
+        color: '#401b29',
+        backgroundColor: '#f7f1f3',
         paddingHorizontal: 5,
         paddingVertical: 3,
         borderRadius: 5,
         textAlign: 'center',
       },
       counterText: {
+        
         fontSize: 18,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
         marginHorizontal: 15,
+      },
+      deleteButton: {
+        marginLeft: 'auto',
       },
   });
 
