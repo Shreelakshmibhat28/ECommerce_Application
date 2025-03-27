@@ -46,8 +46,13 @@ const ProductDetails: React.FC = () => {
         quantity: 1, // Add the quantity property here
       };
       addToCart(cartItem);
+      setVisible(true);
     }
   };
+
+  if(!product){
+    return <Text>Loading...</Text>
+  }
 
   return (
     <View style={styles.container}>
