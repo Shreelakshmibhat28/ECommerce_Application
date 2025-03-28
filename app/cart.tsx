@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 import { useCart } from '../contexts/CartContext';
 import styles from './styles';
 import { localStyles } from './styles';
+import { MaterialIcons } from '@expo/vector-icons'; 
+import { Link } from 'expo-router';
+import handlePayment from './BuyProduct';
 
 const CartScreen: React.FC = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -25,6 +28,11 @@ const CartScreen: React.FC = () => {
           <TouchableOpacity onPress={() => updateQuantity(item.id, item.quantity + 1)}>
             <Text style={localStyles.counterButton}>➕</Text>
           </TouchableOpacity>
+
+          {/* Delete Button */}
+          <TouchableOpacity onPress={() => removeFromCart(item.id)} style={localStyles.deleteButton}>
+            <MaterialIcons name="delete" size={24} color="#ba1003" />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -36,6 +44,12 @@ const CartScreen: React.FC = () => {
     <View style={localStyles.container}>
       <FlatList data={cart} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       <Text style={styles.total}>Total: ${totalPrice.toFixed(2)}</Text>
+
+      <Link href="/cart" asChild>
+                  <Pressable style={styles.floatingButton} onPress={() => handlePayment(totalPrice)}>
+                    <Text style={styles.buttonText}>Buy Now</Text>
+                  </Pressable>
+                </Link>
     </View>
   );
 };
