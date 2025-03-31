@@ -9,6 +9,7 @@ export default function Layout() {
 
   return (
     <CartProvider>
+     
       <View style={{ flex: 1 }}>
         <AppBar />
         {pathname !== '/cart' && (
@@ -19,6 +20,7 @@ export default function Layout() {
           </Link>
         )}
       </View>
+      
     </CartProvider>
   );
 }

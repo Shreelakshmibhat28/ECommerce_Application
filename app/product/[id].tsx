@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, Button , TouchableOpacity} from 'react-native';
-import axios from 'axios';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useCart } from '../../contexts/CartContext';
 import styles from '../styles';
+import productsData from '../../data/products.json'; 
 import { Snackbar } from 'react-native-paper';
 
 interface Product {
@@ -26,10 +26,8 @@ const ProductDetails: React.FC = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    axios
-      .get<Product>(`https://fakestoreapi.com/products/${id}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.error('Error fetching product details:', error));
+    const foundProduct = productsData.find((item) => item.id.toString() === id);
+    setProduct(foundProduct || null);
   }, [id]);
 
   if (!product) {
@@ -43,16 +41,12 @@ const ProductDetails: React.FC = () => {
         title: product.title,
         price: product.price,
         image: product.image,
-        quantity: 1, // Add the quantity property here
+        quantity: 1,
       };
       addToCart(cartItem);
       setVisible(true);
     }
   };
-
-  if(!product){
-    return <Text>Loading...</Text>
-  }
 
   return (
     <View style={styles.container}>
@@ -66,7 +60,7 @@ const ProductDetails: React.FC = () => {
       <Snackbar
         visible={visible}
         onDismiss={() => setVisible(false)}
-        duration={2000} // Dismiss after 2 seconds
+        duration={2000}
         action={{
           label: 'OK',
           onPress: () => setVisible(false),
@@ -77,7 +71,5 @@ const ProductDetails: React.FC = () => {
     </View>
   );
 };
-
-
 
 export default ProductDetails;

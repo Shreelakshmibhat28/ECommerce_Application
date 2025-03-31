@@ -3,6 +3,7 @@ import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native
 import axios from 'axios';
 import { Link } from 'expo-router';
 import styles from './styles';
+import productData from '../data/products.json'; // Assuming you have a local JSON file with product data
 
 interface Product {
   id: number;
@@ -18,14 +19,14 @@ interface Product {
 }
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(productData);
 
-  useEffect(() => {
-    axios
-      .get<Product[]>('https://fakestoreapi.com/products')
-      .then((response) => setProducts(response.data))
-      .catch((error) => console.error('Error fetching products:', error));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get<Product[]>('https://fakestoreapi.com/products')
+  //     .then((response) => setProducts(response.data))
+  //     .catch((error) => console.error('Error fetching products:', error));
+  // }, []);
 
   const renderItem = ({ item }: { item: Product }) => (
     <Link href={`/product/${item.id}`} asChild>
@@ -43,7 +44,5 @@ const ProductList: React.FC = () => {
     <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
   );
 };
-
-
 
 export default ProductList;

@@ -3,13 +3,13 @@ import { Alert} from 'react-native';
 import RazorpayCheckout from 'react-native-razorpay';
 
 
-  const handlePayment = (totalPrice) => {
+  const handlePayment = (totalPrice, clearCart) => {
 
     const amount = Math.round(totalPrice * 100);
     const options = {
       description : "Payment for your Order",
       image: "https://example.com/logo.png",
-      currency: "USD",
+      currency: "INR",
       key: "rzp_test_YOsEoZmoJSx09Z",
       amount: amount.toString(),
       name: "Customer",
@@ -24,6 +24,7 @@ import RazorpayCheckout from 'react-native-razorpay';
     RazorpayCheckout.open(options)
       .then((data) => {
         Alert.alert(`Success: ${data.razorpay_payment_id}`);
+        clearCart();
       })
       .catch((error) => {
         Alert.alert(`Error: ${error.code} | ${error.description}`);

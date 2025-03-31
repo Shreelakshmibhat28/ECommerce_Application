@@ -19,6 +19,7 @@ const AppBar = ()  => {
       <Stack.Screen name="index" options={{ title: "Home" }} />
       <Stack.Screen name="cart" options={{ title: "Shopping Cart" }} />
       <Stack.Screen name="product/[id]" options={{ title: "Product Details" }} />
+     
     </Stack>
     </>
   );

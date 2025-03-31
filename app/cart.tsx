@@ -8,7 +8,7 @@ import { Link } from 'expo-router';
 import handlePayment from './BuyProduct';
 
 const CartScreen: React.FC = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
 
   const renderItem = ({ item }: { item: any }) => (
     <View style={localStyles.itemContainer}>
@@ -46,7 +46,7 @@ const CartScreen: React.FC = () => {
       <Text style={styles.total}>Total: ${totalPrice.toFixed(2)}</Text>
 
       <Link href="/cart" asChild>
-                  <Pressable style={styles.floatingButton} onPress={() => handlePayment(totalPrice)}>
+                  <Pressable style={styles.floatingButton} onPress={() => handlePayment(totalPrice, clearCart)}>
                     <Text style={styles.buttonText}>Buy Now</Text>
                   </Pressable>
                 </Link>

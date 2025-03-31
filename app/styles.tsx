@@ -181,7 +181,8 @@ const styles = StyleSheet.create({
       },
   });
 
- 
+  
+  
   
   export default styles;
-    export { localStyles};
+    export { localStyles };
