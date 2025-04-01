@@ -181,8 +181,46 @@ const styles = StyleSheet.create({
       },
   });
 
-  
+  const trackOrderstyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 16,
+      backgroundColor: '#fff',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 16,
+    },
+    statusItem: {
+      padding: 10,
+      marginVertical: 5,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 5,
+    },
+    statusText: {
+      fontSize: 16,
+    },
+    dateText: {
+      fontSize: 14,
+      color: 'gray',
+    },
+    trackOrderButton: {
+      backgroundColor: '#401b29',
+      padding: 15,
+      borderRadius: 8,
+      marginTop: 20,
+      alignItems: 'center',
+    },
+    
+    trackOrderButtonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+  });
   
   
   export default styles;
-    export { localStyles };
+    export { localStyles, trackOrderstyles };
